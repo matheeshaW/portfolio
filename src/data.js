@@ -30,7 +30,7 @@ export const siteData = {
       label: 'Download CV',
       href: `${baseUrl}cv/W.M.M.B.-WEERAKOON-CV.pdf`,
     },
-    profileImage: `${baseUrl}profile/profilepic3.png`,
+    profileImage: `${baseUrl}profile/profilepic1.jpg`,
   },
   skills: [
     {
