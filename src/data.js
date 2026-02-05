@@ -3,7 +3,7 @@ const baseUrl = import.meta.env.BASE_URL
 export const siteData = {
   name: 'Matheesha Weerakoon',
   title: 'Software Engineering Undergraduate | Full Stack & Mobile Developer',
-  bio: "3rd-year undergraduate at SLIIT with a 3.78 CGPA and a passion for bridging the gap between backend logic and intuitive user experiences. Dean's List awardee and scholarship recipient. Experienced in MERN, Laravel, and Embedded Systems.",
+  bio: "3rd-year undergraduate at SLIIT with a passion for bridging the gap between backend logic and intuitive user experiences. Dean's List awardee and scholarship recipient. Experienced in MERN, Android app development, and Embedded Systems.",
   contact: {
     email: 'matheeshaweerakoon22@gmail.com',
     phone: '+94762314089',
