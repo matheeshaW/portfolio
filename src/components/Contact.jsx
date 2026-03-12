@@ -1,8 +1,46 @@
+import { useRef, useState } from 'react'
+
 import { siteData } from '../data'
 
 function Contact() {
+  const formRef = useRef(null)
+  const [status, setStatus] = useState({ state: 'idle', message: '' })
+
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (status.state === 'sending') {
+      return
+    }
+
+    const formData = new FormData(event.target)
+    formData.append('_subject', 'Portfolio contact form')
+    formData.append('_captcha', 'false')
+
+    setStatus({ state: 'sending', message: 'Sending your message...' })
+
+    fetch('https://formsubmit.co/ajax/matheeshaweerakoon22@gmail.com', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: formData,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Submission failed')
+        }
+        return response.json()
+      })
+      .then(() => {
+        setStatus({ state: 'success', message: 'Thanks! I will reply soon.' })
+        formRef.current?.reset()
+      })
+      .catch(() => {
+        setStatus({
+          state: 'error',
+          message: 'Sorry, something went wrong. Please try again.',
+        })
+      })
   }
 
   return (
@@ -25,7 +63,14 @@ function Contact() {
           </div>
         </div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form className="contact-form" onSubmit={handleSubmit} ref={formRef}>
+          <input
+            className="form-hidden"
+            type="text"
+            name="_honey"
+            tabIndex="-1"
+            autoComplete="off"
+          />
           <div className="form-row">
             <label htmlFor="name">Name</label>
             <input id="name" name="name" type="text" placeholder="Your name" required />
@@ -50,9 +95,18 @@ function Contact() {
               required
             />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Send Message
+          <button
+            className="btn btn-primary"
+            type="submit"
+            disabled={status.state === 'sending'}
+          >
+            {status.state === 'sending' ? 'Sending...' : 'Send Message'}
           </button>
+          {status.message ? (
+            <p className={`form-status ${status.state}`} role="status" aria-live="polite">
+              {status.message}
+            </p>
+          ) : null}
         </form>
       </div>
     </section>

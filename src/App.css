@@ -425,6 +425,31 @@
   box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
 }
 
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.form-status.success {
+  color: #8fffd2;
+}
+
+.form-status.error {
+  color: #ff9f9f;
+}
+
+.form-hidden {
+  display: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding: 2rem 0;
