@@ -18,7 +18,7 @@ function Contact() {
 
     setStatus({ state: 'sending', message: 'Sending your message...' })
 
-    fetch('https://formsubmit.co/ajax/matheeshaweerakoon22@gmail.com', {
+    fetch('https://formsubmit.co/ajax/03cef1c3aa9d8db4a24ce777e23abbd2', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
